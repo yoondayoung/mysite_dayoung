@@ -1,0 +1,70 @@
+@font-face{
+    font-family: 'NanumSquare';
+    src: url(../font/NanumSquareR.woff) format('woff');
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+   font-family: 'NanumSquare';
+   color: rgb(26, 25, 25);
+   background-color: rgb(250, 250, 225);
+}
+
+header{
+    height: 100px;
+    background-color: rgb(243, 135, 135);
+    padding: 10px 20px;
+}
+
+#name, #new_title{
+    color: darkred;
+    margin-bottom: 15px;
+}
+
+div{
+    text-align: right;
+    font-size: 0.9rem;
+}
+
+nav{
+    height: 40px;
+    background-color: rgb(189, 133, 133);
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 50px;
+}
+
+.container{
+    height: 180px;
+    border: 1px solid darkgray;
+    margin: 20px;
+    padding: 10px;
+}
+
+.goods_n{
+    border-bottom: 1px dotted darkred;
+    margin-bottom: 7px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.post-form{
+    margin: 50px 20px;
+    padding: 20px;
+    border-top: 1px dotted darkred;
+    border-bottom: 1px dotted darkred;
+}
+
+.cont{
+    margin: 1rem 0;
+    font-size: 1.2rem;
+}
+
+button{
+    font-size: 0.8rem !important;
+}
