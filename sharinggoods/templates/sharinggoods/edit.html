@@ -8,8 +8,8 @@
 </head>
 <body>
     <header>
-        <h2 id="new_title">내 제품을 게시판에 등록합니다.</h2>
-        <div><a href="{% url 'home' %}">홈페이지로 돌아가기</a></div> 
+        <h1 class="pg-title">게시물 수정하기</h1>
+        <div class="navi"><a href="{% url 'home' %}">홈페이지로 돌아가기</a></div>     
     </header>
     <main>
         <form method="POST" class="post-form">{% csrf_token %}
@@ -17,9 +17,8 @@
             <p class="cont">작성자: {{ form.uploader_name }}</p>
             <p class="cont">대여 가격: {{ form.price }}</p>
             <p class="cont">제품 설명: {{ form.description }}</p>
-            <button type="submit" class="cont">게시판에 업로드</button>
+            <button type="submit" class="save btn btn-default">수정 완료</button>
         </form>
-    </main>
+    </main> 
 </body>
-</html>
-
+</html>        

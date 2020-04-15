@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="kor">
+<head>
+    <meta charset="ut-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'sharinggoods/css/style.css' %}" />
+    <title>자세히보기</title>
+</head>
+<body>
+    <header>
+        <h1 class="pg-title">게시물 내용 자세히 보기</h1>
+    </header>
+    <main>
+        <div class="post-detail">
+            <p>제품: {{ post.goods_name }}</p><br>
+            {% if post.pub_date %}    
+                <div class="date">
+                    작성 일자: {{ post.pub_date }}
+                </div><br>
+            {% endif %}    
+            <p>작성자: {{ post.uploader_name }}</p><br>
+            {% if post.state == True %}
+            <p>상태: 대여 가능</p><br>
+            {% else %}
+            <p>상태: 대여중</p><br>
+            {% endif %}
+            <p>가격: {{ post.price }}원</p><br>
+            <p>제품 설명: {{ post.description|linebreaks }}</p><br> 
+        </div>
+    </main>
+    <nav class="detail-nav">
+        <a href="{% url 'edit' index=post.pk %}">수정하기</a><br>
+    <a href="{% url 'delete' pk=post.pk %}">삭제하기</a><br>
+    <a href="{% url 'home' %}">홈으로 돌아가기</a>
+    </nav>
+</body>
+</html>
