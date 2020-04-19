@@ -4,6 +4,7 @@ from django.db import models
 
 # Create your models here.
 class Content(models.Model):
+    objects = models.Manager()
     goods_name = models.CharField(max_length=200)
     pub_date = models.DateTimeField(default=timezone.now)
     uploader_name = models.CharField(max_length=10)
@@ -12,6 +13,8 @@ class Content(models.Model):
     description = models.TextField(default='')
 
 class Comment(models.Model):
-    user_name = models.CharField(max_length=10)
-    comments = models.TextField(max_length=400)
-    pub_time = models.DateTimeField(default=timezone.now)    
+    objects = models.Manager()
+    post = models.ForeignKey('Content', on_delete=models.CASCADE)
+    user = models.CharField(default='', max_length=10)
+    text = models.TextField(default='')
+    created_date = models.DateTimeField(default=timezone.now)

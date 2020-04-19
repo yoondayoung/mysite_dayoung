@@ -70,3 +70,22 @@ button{
 .detail-nav{
     height: 100%;
 }
+
+._comments-list_{
+    margin: 0.5rem;
+}
+
+._new-comment_{
+    margin: 0.5rem;
+}
+
+.comments-list{
+    border-top: 1px dotted darkred;
+    padding: 1rem;
+    margin: 0 20px;
+}
+
+.new-comment{
+    padding: 1rem;
+    margin: 0 20px;
+}
