@@ -1,35 +1,62 @@
 <!DOCTYPE html>
+{% extends 'sharinggoods/base.html' %}
+{% block content %}
 {% load static %}
-<html lang="kor">
-<head>
-    <meta charset="ut-8">
-    <link rel="stylesheet" type="text/css" href="{% static 'sharinggoods/css/style.css' %}" />
-    <title>홈페이지</title>
-</head>
-<body>
-    <header>
-        <h1 class="pg-title">Share Your Goods at Sogang</h1>
-        자신의 물품을 다른 사람에게 대여해주거나, 다른 사람의 물품을 대여할 수 있는 공간입니다.
-    </header>
-    <nav>
-        <a href="{% url 'new' %}">새 제품 등록</a>
-    </nav>
-    <main>
-        {% for post in posts_list %}
-        <section class="container"> 
-            <a href="{% url 'detail' pk=post.pk %}">{{ post.goods_name }}</a>
-            <hr>
-            <p>작성일자: {{ post.pub_date }}</p>
-            <p>작성자: {{ post.uploader_name }}</p>
-            <p>가격: {{ post.price }}원</p>
-            {% if post.state == True %}
-            <p>상태: 대여 가능</p>
-            {% else %}
-            <p>상태: 대여중</p>
-            {% endif %}
-        </section>
-        {% endfor %}
-    </main>
-</body>
-</html>
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-caption home-caption-display">
+      <h1 class="pb-3">Share Your Goods at Sogang</h1>
+      <p class="pb-3">자신의 물품을 다른 사람에게 대여해주거나, 다른 사람의 물품을 대여할 수 있는 공간입니다.</p>
+    </div>
+    <div id="home-img1" class="carousel-item home-img-display active">
+    </div>
+    <div id="home-img2" class="carousel-item home-img-display">
+    </div>
+    <div id="home-img3" class="carousel-item home-img-display">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<main>
+    <section class="posting-header">
+        <h2 class="posting-h">둘러보기</h2>
+        <p class="posting-d">현재 올라온 물품들을 볼 수 있어요.</p>
+    </section>
 
+    <div class="containter">
+        <div class="row">
+          {% for post in posts_list %}
+          <div class="col-lg-4 col-12 pb-5">
+            <div class="card bg-light mb-3">
+              {% if post.image %}
+              <img src="{{ post.image.url }}" class="card-img-top" alt="product" height="300">
+              {% else %}
+              <img src="{% static 'sharinggoods/img/서강이.png' %}" class="card-img-top" alt="no-image" height="300">
+              {% endif %}
+              <div class="card-body">
+                <h5 class="card-title">{{ post.goods_name }}</h5>
+                <p class="card-text">작성일자: {{post.pub_date }}</p>
+                <p class="card-text">작성자: {{ post.uploader_name }}</p>
+                <p class="card-text">가격: {{ post.price }}원</p>
+                {% if post.state == True %}
+                <p class="card-text">상태: 대여 가능</p>
+                {% else %}
+                <p class="card-text">상태: 대여중</p>
+                {% endif %}
+                <a href="{% url 'detail' pk=post.pk %}" class="btn btn-secondary">자세히 보기</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+</main>
+{% endblock %}

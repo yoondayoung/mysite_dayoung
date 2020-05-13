@@ -1,25 +1,19 @@
-<!DOCTYPE html>
+{% extends 'sharinggoods/base.html' %}
+{% block content %}
 {% load static %}
-<html lang="kor">
-<head>
-    <meta charset="ut-8">
-    <link rel="stylesheet" type="text/css" href="{% static 'sharinggoods/css/style.css' %}" />
-    <title>게시물 작성</title>
-</head>
-<body>
-    <header>
+<section class="banner">
+    <div class="pg-description">
         <h1 class="pg-title">내 제품을 게시판에 등록합니다.</h2>
-        <div class="navi"><a href="{% url 'home' %}">홈페이지로 돌아가기</a></div> 
-    </header>
-    <main>
-        <form method="POST" class="post-form">{% csrf_token %}
-            <p class="cont">제품 이름: {{ form.goods_name }}</p>
-            <p class="cont">작성자: {{ form.uploader_name }}</p>
-            <p class="cont">대여 가격: {{ form.price }}</p>
-            <p class="cont">제품 설명: {{ form.description }}</p>
-            <button type="submit" class="cont">게시판에 업로드</button>
-        </form>
-    </main>
-</body>
-</html>
-
+    </div>
+</section>
+<main>
+    <form class="post-form" method="POST" enctype="multipart/form-data">{% csrf_token %}
+        <p class="cont">제품 이름: {{ form.goods_name }}</p>
+        <p class="cont">작성자: {{ form.uploader_name }}</p>
+        <p class="cont">대여 가격: {{ form.price }}</p>
+        <p class="cont">제품 설명: {{ form.description }}</p>
+        <p class="cont">제품 사진: {{ form.image }} </p>
+        <button type="submit" class="btn btn-secondary detail_btn">업로드</button>
+    </form>
+</main>
+{% endblock %}

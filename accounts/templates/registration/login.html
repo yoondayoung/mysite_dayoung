@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends 'sharinggoods/base.html' %}
+{% block content %}
+{% load static %}
+<section class="banner">
+    <div class="pg-description">
+        <p class="pg-title">Log In</p>
+    </div>
+</section>
+<main class="login main">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button  class="btn btn-secondary detail_btn" type="submit">Login</button>
+    </form>
+</main>
+<footer class="login footer">
+    <p>새로 계정을 만드시겠습니까?</p>
+    <a class="btn btn-secondary detail_btn" href="{% url 'register' %}">회원가입</a>
+    {% endblock %}
+</footer>

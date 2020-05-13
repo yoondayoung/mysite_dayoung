@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends 'sharinggoods/base.html' %}
+{% block content %}
+{% load static %}
+<section class="banner">
+    <div class="pg-description">
+        <p class="pg-title">Join Us</p>
+    </div>
+</section>
+<main class="register">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-secondary detail_btn" type="submit">Sign Up</button>
+    </form>
+</main>
+{% endblock %}

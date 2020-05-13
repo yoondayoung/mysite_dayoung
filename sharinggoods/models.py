@@ -11,6 +11,7 @@ class Content(models.Model):
     state = models.BooleanField(default=True)
     price = models.PositiveIntegerField(default=0)
     description = models.TextField(default='')
+    image = models.ImageField(blank=True, upload_to="sharinggoods/products/%Y/%m/%d")
 
 class Comment(models.Model):
     objects = models.Manager()

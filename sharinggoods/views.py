@@ -27,7 +27,7 @@ def detail(request, pk):
     post = get_object_or_404(Content, pk=pk)
     comment_list = Comment.objects.filter(post=post)
     if request.method == "POST":
-        comment_form = CommentForm(request.POST)
+        comment_form = CommentForm(request.POST, request.FILES)
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
             comment.published_date = timezone.now()
@@ -41,7 +41,7 @@ def detail(request, pk):
 def edit(request, index):
     post = get_object_or_404(Content, pk=index)
     if request.method == "POST":
-        form = ContentForm(request.POST, instance=post)
+        form = ContentForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
@@ -60,4 +60,4 @@ def delete(request, pk):
 def delete_comment(request, pk, comment_pk):
     comment = get_object_or_404(Comment, pk=comment_pk)
     comment.delete()
-    return redirect('detail', pk=pk)    
+    return redirect('detail', pk=pk)
