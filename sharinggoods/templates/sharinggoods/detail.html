@@ -23,8 +23,10 @@
         {% endif %}
         <p>가격: {{ post.price }}원</p>
         <p>{% if post.image %}
-            <img src="{{ post.image.url }}" alt="product" width="500" height=auto>
-            {% endif %}</p>
+            <img src="{{ post.image.url }}" alt="product" width="500" height=auto><br>
+            <a href="{{ post.image.url }}" download>이미지 다운</a>
+            {% endif %}
+        </p>
         <p>제품 설명: {{ post.description|linebreaks }}</p>
         <nav class="detail-nav">
             <a href="{% url 'edit' index=post.pk %}" class="btn btn-secondary detail_btn">수정하기</a>

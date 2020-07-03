@@ -10,8 +10,15 @@
 <main class="login main">
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button  class="btn btn-secondary detail_btn" type="submit">Login</button>
+        <p>
+            <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username" 
+            class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </p>
+        <p>
+            <input type="password" name="password" autocomplete="current-password" required="" id="id_password" 
+            class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+        </p>
+        <button class="btn btn-secondary detail_btn" type="submit">Login</button>
     </form>
 </main>
 <footer class="login footer">

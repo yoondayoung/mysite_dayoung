@@ -13,6 +13,9 @@ class Content(models.Model):
     description = models.TextField(default='')
     image = models.ImageField(blank=True, upload_to="sharinggoods/products/%Y/%m/%d")
 
+    def __str__(self):
+        return self.goods_name
+
 class Comment(models.Model):
     objects = models.Manager()
     post = models.ForeignKey('Content', on_delete=models.CASCADE)

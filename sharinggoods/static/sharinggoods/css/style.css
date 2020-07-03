@@ -139,3 +139,7 @@ button{
 .home-caption-display p{
     font-size: 1.8em;
 }
+
+.form-control{
+    width: 30%;
+}
